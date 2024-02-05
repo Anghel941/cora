@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="estilo.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div  id="reproductor">
+    <audio id="audioPlayer" controls>
+      <source src="nina.mp3" type="audio/mp3">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+  </div>
+  <div class="mensaje" id="mensaje">
+   
+    <h2> <div id="contador">10</div>Para la dermatóloga con la sonrisa más hermosa 🥰!! Solo es un pequeño recordatorio de lo especial que eres 😁❤️ </h2>
+    <H2>FELIZ DIA MYCHELLE 🙈🥳🥳<button id="playButton">Dame Click😅</button></H2>
+  </div>
+  <div class="container" id="container">
+    <div></div>
+    <div class="glass">
+      <div class="shine"></div>
+    </div>
+    <div class="thorns">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="leaves">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="petals">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="deadPetals">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <script>
+    const playButton = document.getElementById('playButton');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const container = document.getElementById('container');
+    const mensaje = document.getElementById('mensaje');
+    playButton.addEventListener('click', () => {
+      container.style.display = 'block';
+      mensaje.style.opacity = '0';
+      audioPlayer.play();
+      setTimeout(() => {
+        container.style.opacity = '1'; 
+      }, 100);
+      setTimeout(() => {
+        mensaje.style.display = 'none'; // Oculta el mensaje después de un breve retardo
+      }, 100);
+    });
+    function iniciarContador() {
+      let tiempoRestante = 10; // Tiempo inicial en segundos
+      const contadorElemento = document.getElementById('contador');
+
+      // Actualiza el contador y detiene el intervalo cuando alcanza 0
+      function actualizarContador() {
+        contadorElemento.textContent = tiempoRestante;
+        tiempoRestante--;
+
+        if (tiempoRestante < 0) {
+          clearInterval(intervalo);
+          // Puedes agregar aquí cualquier acción que desees después de que el contador llegue a 0
+        }
+      }
+
+      // Actualiza el contador cada segundo
+      const intervalo = setInterval(actualizarContador, 1000);
+    }
+    document.addEventListener('DOMContentLoaded', iniciarContador);
+  </script>
+</body>
+</html>
